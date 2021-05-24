@@ -1,8 +1,8 @@
 {
-  "name": "@gnarus-g/boiler",
+  "name": "@gnarus-g/app-seed",
   "version": "1.0.0",
   "description": "CLI to generate boilerplate code and configurations for web projects.",
-  "main": "boilergen.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,18 +11,22 @@
     "url": "git+https://github.com/Gnarus-G/boiler.git"
   },
   "bin": {
-    "@gnarus-g/boiler": "boilergen.js",
-    "boilergen": "boilergen.js"
+    "@gnarus-g/app-seed": "index.js",
+    "@gnarus-g/as": "index.js",
+    "app-seed": "index.js"
   },
   "files": [
     "templates",
-    "lib.js",
-    "boilergen.js"
+    "lib",
+    "index.js"
   ],
   "keywords": [
     "cli",
     "web",
-    "boilergen"
+    "boilerplate",
+    "code",
+    "generate",
+    "app-seed"
   ],
   "publishConfig": {
     "access": "public"

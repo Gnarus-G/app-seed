@@ -1,11 +1,11 @@
-# boiler
+# app-seed
 CLI to generate boilerplate code and configurations for web projects.
 
 ## Usage
 ```bash
-npx @gnarus-g/boiler my-app
+npx @gnarus-g/as my-app
 ```
 OR
 ```bash
-npx boilergen my-app
+npx app-seed my-app
 ```

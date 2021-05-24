@@ -3,13 +3,15 @@ const chalk = require("chalk");
 const Listr = require("listr");
 const { promptForScope, promptForTemplate, copyTemplate } = require("./lib");
 
+const APP_NAME = "app-seed";
+
 const argv = require('yargs/yargs')(process.argv.slice(2))
-  .usage(`${chalk.blue("boilergen")} ${chalk.green("<dir>")}`)
+  .usage(`${chalk.blue(APP_NAME)} ${chalk.green("<dir>")}`)
   .check((argv, _) => {
     if (!argv._[0])
       throw new Error(
         "Please specify the target directory; for example:\n" +
-        `${chalk.blue("boilergen")} ${chalk.green("my-app")}\n`
+        `${chalk.blue(APP_NAME)} ${chalk.green("my-app")}\n`
       );
     else
       return true;
