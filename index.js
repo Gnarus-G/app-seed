@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 const chalk = require("chalk");
-const execa = require("execa");
-const Listr = require("listr");
-const { join } = require("path/posix");
-const { promptForScope, promptForTemplate, copyTemplate } = require("./lib");
+const appSeed = require("./lib/app-seed");
 
 const APP_NAME = "app-seed";
 
@@ -32,45 +29,6 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
   })
   .argv
 
-const TARGET_DIR = argv._[0];
-
-(async () => {
-
-  const scope = await promptForScope();
-  const { template } = await promptForTemplate(scope);
-
-  await new Listr([
-    {
-      title: "Copy project files",
-      task: () => copyTemplate({ scope, template }, TARGET_DIR)
-    },
-    {
-      title: "NPM install",
-      task: () => installNpmDeps(TARGET_DIR),
-      enabled: () => argv.install
-    },
-    {
-      title: "Git init",
-      task: () => intializeGit(TARGET_DIR),
-      enabled: () => argv.git
-    },
-  ]).run();
-
-  console.log(chalk.blue("DONE"))
-
-})().catch(err => console.log(`err`, err))
-
-async function intializeGit(target) {
-  await execa("git", ["init", target]);
-  await execa("git", ["add", target]);
-  await execa("git", ["commit", "-am", "Initial commit"]);
-}
-
-async function installNpmDeps(targetDir) {
-  await execa("mkdir", ["-p", targetDir + "/node_modules"])
-  await execa("npm", ["i", "--prefix", targetDir]);
-}
-
-function getTargetDir({ scope, template, target }) {
-  return join(process.cwd(), scope, template, target);
-}
+appSeed(argv, argv._[0])
+  .then(() => console.log(chalk.blue("    DONE")))
+  .catch(err => console.log(`err`, err));
