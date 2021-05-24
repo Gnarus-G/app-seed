@@ -1,6 +1,6 @@
 {
   "name": "@gnarus/boiler",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "CLI to generate boilerplate code and configurations for web projects.",
   "main": "boilergen.js",
   "scripts": {
