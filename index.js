@@ -45,15 +45,15 @@ const TARGET_DIR = argv._[0];
       task: () => copyTemplate({ scope, template }, TARGET_DIR)
     },
     {
+      title: "NPM install",
+      task: () => installNpmDeps(TARGET_DIR),
+      enabled: () => argv.install
+    },
+    {
       title: "Git init",
       task: () => intializeGit(TARGET_DIR),
       enabled: () => argv.git
     },
-    {
-      title: "NPM install",
-      task: () => installNpmDeps(TARGET_DIR),
-      enabled: () => argv.install
-    }
   ]).run();
 
   console.log(chalk.blue("DONE"))
