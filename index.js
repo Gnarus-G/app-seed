@@ -43,5 +43,6 @@ const TARGET_DIR = argv._[0];
 
 async function intializeGit(target) {
   await execa("git", ["init", target]);
+  await execa("git", ["add", target]);
   await execa("git", ["commit", "-am", "Initial commit" ]);
 }
