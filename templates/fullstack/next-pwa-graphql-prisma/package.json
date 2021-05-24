@@ -1,0 +1,37 @@
+{
+  "name": "next-app",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc",
+    "generate": "prisma generate",
+    "generate:watch": "prisma generate --watch",
+    "dev:migrate": "prisma migrate dev"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@prisma/client": "2.22.1",
+    "@types/graphql-fields": "^1.3.3",
+    "apollo-server-micro": "^2.24.1",
+    "class-validator": "^0.13.1",
+    "graphql-fields": "^2.0.3",
+    "graphql-scalars": "^1.9.3",
+    "next": "latest",
+    "next-pwa": "^5.2.21",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.21",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "prisma": "2.22.1",
+    "typegraphql-prisma": "^0.14.2",
+    "typescript": "^4.2.4"
+  },
+  "license": "UNLICENSED"
+}

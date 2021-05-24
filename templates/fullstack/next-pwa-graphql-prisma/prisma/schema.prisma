@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:lite.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider        = "typegraphql-prisma"
+  simpleResolvers = true
+}
+
+model User {
+  id       String @id @default(cuid())
+  name     String
+  password String
+  posts    Post[]
+}
+
+model Post {
+  id String @id @default(cuid())
+  User   User   @relation(fields: [authorId], references: [id])
+  authorId String
+}
