@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const chalk = require("chalk");
+const execa = require("execa");
 const Listr = require("listr");
 const { promptForScope, promptForTemplate, copyTemplate } = require("./lib");
 
@@ -29,9 +30,18 @@ const TARGET_DIR = argv._[0];
     {
       title: "Copy project files",
       task: () => copyTemplate(opts, TARGET_DIR)
+    },
+    {
+      title: "Git init",
+      task: () => intializeGit(TARGET_DIR)
     }
   ]).run();
 
   console.log(chalk.blue("DONE"))
 
 })().catch(err => console.log(`err`, err))
+
+async function intializeGit(target) {
+  await execa("git", ["init", target]);
+  await execa("git", ["commit", "-am", "Initial commit" ]);
+}
