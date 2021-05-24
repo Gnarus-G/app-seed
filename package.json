@@ -16,8 +16,8 @@
   },
   "files": [
     "templates",
-    "lib",
-    "boilergen"
+    "lib.js",
+    "boilergen.js"
   ],
   "keywords": [
     "cli",
