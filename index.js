@@ -20,12 +20,10 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
   })
   .check((argv, _) => {
     if (!argv._[0])
-      throw new Error(
-        "Please specify the target directory; for example:\n" +
-        `${chalk.blue(APP_NAME)} ${chalk.green("my-app")}\n`
-      );
-    else
-      return true;
+      throw new Error( "Please specify the target directory; for example:\n" +
+        `${chalk.blue(APP_NAME)} ${chalk.green("my-app")}\n`);
+
+    return true;
   })
   .argv
 
