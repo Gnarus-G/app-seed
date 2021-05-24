@@ -1,7 +1,12 @@
-const Listr = require("listr");
-const { promptForScope, promptForTemplate, copyTemplate, installNpmDeps, intializeGit } = require(".");
+import Listr from "listr";
+import { promptForScope, promptForTemplate, copyTemplate, installNpmDeps, intializeGit } from ".";
 
-const appSeed = async (argv, target) => {
+type Options = {
+    git: boolean,
+    install: boolean,
+}
+
+const appSeed = async (argv: Options, target: string) => {
 
     const scope = await promptForScope();
     const template = await promptForTemplate(scope);
@@ -9,7 +14,7 @@ const appSeed = async (argv, target) => {
     const tasks = new Listr([
         {
             title: "Copy project files",
-            task: () => copyTemplate({ scope, template, target })
+            task: () => copyTemplate(scope, template, target)
         },
         {
             title: "NPM install",

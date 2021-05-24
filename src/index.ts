@@ -1,16 +1,14 @@
-require = require("esm")(module);
-
-const { readdir } = require("fs");
-const inquirer = require("inquirer");
-const ncp = require("ncp");
-const execa = require("execa");
-const { join, resolve } = require("path");
-const { promisify } = require("util");
+import { readdir } from "fs";
+import inquirer from "inquirer";
+import ncp from "ncp";
+import execa from "execa";
+import { join, resolve } from "path";
+import { promisify } from "util";
 
 const readDir = promisify(readdir);
 const copy = promisify(ncp);
 
-async function promptForScope() {
+export async function promptForScope() {
     const { scope } = await inquirer.prompt([
         {
             type: "list",
@@ -22,7 +20,7 @@ async function promptForScope() {
     return scope;
 }
 
-async function promptForTemplate(scope) {
+export async function promptForTemplate(scope: string) {
     const { template } = await inquirer.prompt([
         {
             type: "list",
@@ -34,20 +32,20 @@ async function promptForTemplate(scope) {
     return template;
 }
 
-async function copyTemplate({ scope, template, target }) {
+export async function copyTemplate(scope: string, template: string, target: string) {
     const source = join(templateDir(), scope, template)
     return copy(source, target, {
         clobber: false
     });
 }
 
-async function intializeGit(target) {
+export async function intializeGit(target: string) {
     await execa("git", ["init", target]);
     await execa("git", ["add", target]);
     await execa("git", ["commit", "-am", "Initial commit"]);
 }
 
-async function installNpmDeps(targetDir) {
+export async function installNpmDeps(targetDir: string) {
     await execa("mkdir", ["-p", targetDir + "/node_modules"])
     await execa("npm", ["i", "--prefix", targetDir]);
 }
@@ -56,7 +54,7 @@ async function getScopes() {
     return readDir(templateDir());
 }
 
-async function getTemplates(scope) {
+async function getTemplates(scope: string) {
     const templates = join(templateDir(), scope);
     return readDir(templates);
 }
@@ -64,12 +62,4 @@ async function getTemplates(scope) {
 function templateDir() {
     const currFile = import.meta.url;
     return resolve(new URL(currFile).pathname, "../../templates");
-}
-
-module.exports = {
-    promptForScope,
-    promptForTemplate,
-    copyTemplate,
-    intializeGit,
-    installNpmDeps
 }
