@@ -1,65 +1,32 @@
-import { readdir } from "fs";
-import inquirer from "inquirer";
-import ncp from "ncp";
-import execa from "execa";
-import { join, resolve } from "path";
-import { promisify } from "util";
+#!/usr/bin/env node
+import { blue, green } from "chalk";
+import appSeed from "./app-seed";
 
-const readDir = promisify(readdir);
-const copy = promisify(ncp);
+const APP_NAME = "app-seed";
 
-export async function promptForScope() {
-    const { scope } = await inquirer.prompt([
-        {
-            type: "list",
-            name: 'scope',
-            message: "Select a scope/environment for this project.",
-            choices: await getScopes()
-        }
-    ])
-    return scope;
-}
+const argv = require('yargs/yargs')(process.argv.slice(2))
+  .usage(`${blue(APP_NAME)} ${green("<dir>")}`)
+  .option("git", {
+    alias: "g",
+    type: "boolean",
+    default: true,
+    description: "Do initialize git"
+  })
+  .option("install", {
+    alias: "i",
+    type: "boolean",
+    default: true,
+    description: "Install npm dependencies"
+  })
+  .check((argv, _) => {
+    if (!argv._[0])
+      throw new Error( "Please specify the target directory; for example:\n" +
+        `${blue(APP_NAME)} ${green("my-app")}\n`);
 
-export async function promptForTemplate(scope: string) {
-    const { template } = await inquirer.prompt([
-        {
-            type: "list",
-            name: 'template',
-            message: "Select a project template.",
-            choices: await getTemplates(scope)
-        }
-    ])
-    return template;
-}
+    return true;
+  })
+  .argv
 
-export async function copyTemplate(scope: string, template: string, target: string) {
-    const source = join(templateDir(), scope, template)
-    return copy(source, target, {
-        clobber: false
-    });
-}
-
-export async function intializeGit(target: string) {
-    await execa("git", ["init", target]);
-    await execa("git", ["add", target]);
-    await execa("git", ["commit", "-am", "Initial commit"]);
-}
-
-export async function installNpmDeps(targetDir: string) {
-    await execa("mkdir", ["-p", targetDir + "/node_modules"])
-    await execa("npm", ["i", "--prefix", targetDir]);
-}
-
-async function getScopes() {
-    return readDir(templateDir());
-}
-
-async function getTemplates(scope: string) {
-    const templates = join(templateDir(), scope);
-    return readDir(templates);
-}
-
-function templateDir() {
-    const currFile = import.meta.url;
-    return resolve(new URL(currFile).pathname, "../../templates");
-}
+appSeed(argv, argv._[0])
+  .then(() => console.log(blue("    DONE")))
+  .catch(err => console.log(`err`, err));

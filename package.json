@@ -11,13 +11,12 @@
     "url": "git+https://github.com/Gnarus-G/boiler.git"
   },
   "bin": {
-    "@gnarus-g/app-seed": "index.js",
-    "app-seed": "index.js"
+    "@gnarus-g/app-seed": "lib/index.js",
+    "app-seed": "lib/index.js"
   },
   "files": [
     "templates",
-    "lib",
-    "index.js"
+    "lib"
   ],
   "keywords": [
     "cli",

@@ -1,5 +1,5 @@
 import Listr from "listr";
-import { promptForScope, promptForTemplate, copyTemplate, installNpmDeps, intializeGit } from ".";
+import { promptForScope, promptForTemplate, copyTemplate, installNpmDeps, intializeGit } from "./utils";
 
 type Options = {
     git: boolean,
@@ -31,4 +31,4 @@ const appSeed = async (argv: Options, target: string) => {
     await tasks.run();
 }
 
-module.exports = appSeed;
+export default appSeed;
