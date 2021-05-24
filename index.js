@@ -8,6 +8,7 @@ const APP_NAME = "app-seed";
 
 const argv = require('yargs/yargs')(process.argv.slice(2))
   .usage(`${chalk.blue(APP_NAME)} ${chalk.green("<dir>")}`)
+  .option("no-git", {type: "boolean", description: "Run without initializing git"})
   .check((argv, _) => {
     if (!argv._[0])
       throw new Error(
@@ -33,7 +34,8 @@ const TARGET_DIR = argv._[0];
     },
     {
       title: "Git init",
-      task: () => intializeGit(TARGET_DIR)
+      task: () => intializeGit(TARGET_DIR),
+      enabled: () => !argv["no-git"]
     }
   ]).run();
 
