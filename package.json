@@ -1,0 +1,42 @@
+{
+  "name": "@gnarus/boiler",
+  "version": "0.0.0",
+  "description": "CLI to generate boilerplate code and configurations for web projects.",
+  "main": "boilergen.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gnarus-G/boiler.git"
+  },
+  "bin": {
+    "@gnarus/boiler": "boilergen.js",
+    "boilergen": "boilergen.js"
+  },
+  "keywords": [
+    "cli",
+    "web",
+    "boilergen"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Gnarus-G",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gnarus-G/boiler/issues"
+  },
+  "homepage": "https://github.com/Gnarus-G/boiler#readme",
+  "devDependencies": {
+    "@types/node": "^15.6.0",
+    "@types/yargs": "^17.0.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "inquirer": "^8.1.0",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
+    "yargs": "^17.0.1"
+  }
+}
