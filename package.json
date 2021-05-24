@@ -1,5 +1,5 @@
 {
-  "name": "@gnarus/boiler",
+  "name": "@gnarus-g/boiler",
   "version": "1.0.0",
   "description": "CLI to generate boilerplate code and configurations for web projects.",
   "main": "boilergen.js",
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/Gnarus-G/boiler.git"
   },
   "bin": {
-    "@gnarus/boiler": "boilergen.js",
+    "@gnarus-g/boiler": "boilergen.js",
     "boilergen": "boilergen.js"
   },
   "files": [
