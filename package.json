@@ -11,8 +11,7 @@
     "url": "git+https://github.com/Gnarus-G/boiler.git"
   },
   "bin": {
-    "@gnarus-g/app-seed": "lib/index.js",
-    "app-seed": "lib/index.js"
+    "@gnarus-g/app-seed": "lib/index.js"
   },
   "files": [
     "templates",
