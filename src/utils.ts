@@ -2,7 +2,7 @@ import { readdir } from "fs";
 import inquirer from "inquirer";
 import ncp from "ncp";
 import execa from "execa";
-import { join, resolve } from "path";
+import { join } from "path";
 import { promisify } from "util";
 
 const readDir = promisify(readdir);
@@ -60,6 +60,5 @@ async function getTemplates(scope: string) {
 }
 
 function templateDir() {
-    const currFile = import.meta.url;
-    return resolve(new URL(currFile).pathname, "../../templates");
+    return join(__dirname, "../templates");
 }
