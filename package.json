@@ -12,7 +12,6 @@
   },
   "bin": {
     "@gnarus-g/app-seed": "index.js",
-    "@gnarus-g/as": "index.js",
     "app-seed": "index.js"
   },
   "files": [
