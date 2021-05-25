@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gnarus-G/boiler.git"
+    "url": "git+https://github.com/Gnarus-G/app-seed.git"
   },
   "bin": {
     "@gnarus-g/app-seed": "lib/index.js"
@@ -31,9 +31,9 @@
   "author": "Gnarus-G",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Gnarus-G/boiler/issues"
+    "url": "https://github.com/Gnarus-G/app-seed/issues"
   },
-  "homepage": "https://github.com/Gnarus-G/boiler#readme",
+  "homepage": "https://github.com/Gnarus-G/app-seed#readme",
   "devDependencies": {
     "@types/inquirer": "^7.3.1",
     "@types/listr": "^0.14.3",
