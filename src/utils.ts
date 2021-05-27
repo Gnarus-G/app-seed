@@ -41,7 +41,8 @@ export async function copyTemplate(scope: string, template: string, target: stri
 
 export async function intializeGit(target: string) {
     await execa("git", ["init", target]);
-    await execa("git", ["add", target]);
+    process.chdir(target);
+    await execa("git", ["add", "."]);
     await execa("git", ["commit", "-am", "Initial commit"]);
 }
 
