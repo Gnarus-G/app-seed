@@ -4,7 +4,8 @@
   "description": "CLI to generate boilerplate code and configurations for web projects.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "postversion": "git push"
   },
   "repository": {
     "type": "git",
