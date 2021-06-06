@@ -17,14 +17,14 @@ const appSeed = async (argv: Options, target: string) => {
             task: () => copyTemplate(scope, template, target)
         },
         {
-            title: "NPM install",
-            task: () => installNpmDeps(target),
-            enabled: () => argv.install
-        },
-        {
             title: "Git init",
             task: () => intializeGit(target),
             enabled: () => argv.git
+        },
+        {
+            title: "NPM install",
+            task: () => installNpmDeps(target),
+            enabled: () => argv.install
         },
     ]);
 
