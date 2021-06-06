@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
+    "test": "jest",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
@@ -26,6 +27,7 @@
     "type-graphql": "^1.1.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.13.0",
     "@types/jest": "^26.0.23",
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
