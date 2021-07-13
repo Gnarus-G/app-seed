@@ -1,12 +1,12 @@
 import Listr from "listr";
 import { promptForScope, promptForTemplate, copyTemplate, installNpmDeps, intializeGit } from "./utils";
 
-type Options = {
+export type Options = {
     git: boolean,
     install: boolean,
 }
 
-const appSeed = async (argv: Options, target: string) => {
+const appSeed = async (argv: Options, targetDir: string) => {
 
     const scope = await promptForScope();
     const template = await promptForTemplate(scope);
@@ -14,16 +14,16 @@ const appSeed = async (argv: Options, target: string) => {
     const tasks = new Listr([
         {
             title: "Copy project files",
-            task: () => copyTemplate(scope, template, target)
+            task: () => copyTemplate(scope, template, targetDir)
         },
         {
             title: "Git init",
-            task: () => intializeGit(target),
+            task: () => intializeGit(targetDir),
             enabled: () => argv.git
         },
         {
             title: "NPM install",
-            task: () => installNpmDeps(target),
+            task: () => installNpmDeps(targetDir),
             enabled: () => argv.install
         },
     ]);
