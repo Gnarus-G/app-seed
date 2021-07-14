@@ -1,0 +1,21 @@
+{
+  "name": "apollo-express-graphql-ws",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "nodemon --exec ts-node --transpile-only src/index.ts"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "apollo-server-express": "^2.25.0",
+    "express": "^4.17.1",
+    "graphql-ws": "^5.3.0",
+    "ws": "^7.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  }
+}
